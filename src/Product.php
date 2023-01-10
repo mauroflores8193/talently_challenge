@@ -2,7 +2,7 @@
 
 namespace App;
 
-class VillaPeruana
+class Product
 {
     public $name;
 
