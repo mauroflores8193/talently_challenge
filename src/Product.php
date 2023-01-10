@@ -2,27 +2,28 @@
 
 namespace App;
 
-class Product
-{
-    public $name;
+class Product {
+    private $name;
 
-    public $quality;
+    private $quality;
 
-    public $sellIn;
+    private $sellIn;
 
-    public function __construct($name, $quality, $sellIn)
-    {
+    public function __construct($name, $quality, $sellIn) {
         $this->name = $name;
         $this->quality = $quality;
         $this->sellIn = $sellIn;
     }
 
-    public static function of($name, $quality, $sellIn) {
-        return new static($name, $quality, $sellIn);
+    public function getQuality() {
+        return $this->quality;
     }
 
-    public function tick()
-    {
+    public function getSellIn() {
+        return $this->sellIn;
+    }
+
+    public function tick() {
         if ($this->name != 'Pisco Peruano' and $this->name != 'Ticket VIP al concierto de Pick Floid') {
             if ($this->quality > 0) {
                 if ($this->name != 'Tumi de Oro Moche') {
