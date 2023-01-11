@@ -3,6 +3,7 @@
 namespace App\FactoryMethod;
 
 class ProductBuilder {
+
     private $name;
 
     private $quality;
