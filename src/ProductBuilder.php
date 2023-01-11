@@ -25,6 +25,12 @@ class ProductBuilder {
     }
 
     public function build() {
-        return new Product($this->name, $this->quality, $this->sellIn);
+        $classByName = [
+            'Tumi de Oro Moche' => 'App\TumiProduct',
+            'Pisco Peruano' => 'App\PiscoProduct',
+            'Ticket VIP al concierto de Pick Floid' => 'App\TicketProduct',
+        ];
+        $class = array_key_exists($this->name, $classByName) ? $classByName[$this->name] : 'App\NormalProduct';
+        return new $class($this->name, $this->quality, $this->sellIn);
     }
 }

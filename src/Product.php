@@ -2,73 +2,46 @@
 
 namespace App;
 
-class Product {
-    private $name;
+abstract class Product {
 
-    private $quality;
+    private string $name;
 
-    private $sellIn;
+    protected int $quality;
+
+    protected int $sellIn;
+
+    private array $rangeQuality;
 
     public function __construct($name, $quality, $sellIn) {
         $this->name = $name;
-        $this->quality = $quality;
+        $this->setQuality($quality);
         $this->sellIn = $sellIn;
     }
 
-    public function getQuality() {
+    protected function setQualityRange($minQuality, $maxQuality) {
+        $this->rangeQuality = [$minQuality, $maxQuality];
+    }
+
+    public function getQuality(): int {
         return $this->quality;
     }
 
-    public function getSellIn() {
+    public function getSellIn(): int {
         return $this->sellIn;
     }
 
-    public function tick() {
-        if ($this->name != 'Pisco Peruano' and $this->name != 'Ticket VIP al concierto de Pick Floid') {
-            if ($this->quality > 0) {
-                if ($this->name != 'Tumi de Oro Moche') {
-                    $this->quality = $this->quality - 1;
-                }
-            }
-        } else {
-            if ($this->quality < 50) {
-                $this->quality = $this->quality + 1;
-
-                if ($this->name == 'Ticket VIP al concierto de Pick Floid') {
-                    if ($this->sellIn < 11) {
-                        if ($this->quality < 50) {
-                            $this->quality = $this->quality + 1;
-                        }
-                    }
-                    if ($this->sellIn < 6) {
-                        if ($this->quality < 50) {
-                            $this->quality = $this->quality + 1;
-                        }
-                    }
-                }
-            }
-        }
-
-        if ($this->name != 'Tumi de Oro Moche') {
-            $this->sellIn = $this->sellIn - 1;
-        }
-
-        if ($this->sellIn < 0) {
-            if ($this->name != 'Pisco Peruano') {
-                if ($this->name != 'Ticket VIP al concierto de Pick Floid') {
-                    if ($this->quality > 0) {
-                        if ($this->name != 'Tumi de Oro Moche') {
-                            $this->quality = $this->quality - 1;
-                        }
-                    }
-                } else {
-                    $this->quality = $this->quality - $this->quality;
-                }
-            } else {
-                if ($this->quality < 50) {
-                    $this->quality = $this->quality + 1;
-                }
-            }
-        }
+    public function setQuality($quality) {
+        $this->quality = $quality > $this->getMaxQuality() ? $this->getMaxQuality() : $quality;
+        $this->quality = $this->quality < $this->getMinQuality() ? $this->getMinQuality() : $this->quality;
     }
+
+    public function getMinQuality() {
+        return $this->rangeQuality[0];
+    }
+
+    public function getMaxQuality() {
+        return $this->rangeQuality[1];
+    }
+
+    abstract function tick();
 }
