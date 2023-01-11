@@ -2,7 +2,7 @@
 
 namespace App;
 
-abstract class NotLegendaryProduct extends Product {
+abstract class NoLegendaryProduct extends Product {
 
     public function __construct($name, $quality, $sellIn) {
         $this->setQualityRange(0, 50);

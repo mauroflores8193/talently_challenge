@@ -2,7 +2,7 @@
 
 namespace App;
 
-class TicketProduct extends NotLegendaryProduct {
+class TicketProduct extends NoLegendaryProduct {
 
     public function calculateQuality() {
         if ($this->isExpired()) {

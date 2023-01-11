@@ -2,7 +2,7 @@
 
 namespace App;
 
-class PiscoProduct extends NotLegendaryProduct {
+class PiscoProduct extends NoLegendaryProduct {
 
     public function calculateQuality() {
         if ($this->isExpired()) {
