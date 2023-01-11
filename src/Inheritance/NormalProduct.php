@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Inheritance;
 
 class NormalProduct extends NoLegendaryProduct {
     public function calculateQuality() {

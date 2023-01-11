@@ -1,6 +1,6 @@
 <?php
 
-use App\ProductBuilder;
+use App\Inheritance\ProductBuilder;
 
 /*
  * Your work begins on LINE 248.

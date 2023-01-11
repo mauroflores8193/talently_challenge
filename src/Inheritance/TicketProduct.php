@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Inheritance;
 
 class TicketProduct extends NoLegendaryProduct {
 
